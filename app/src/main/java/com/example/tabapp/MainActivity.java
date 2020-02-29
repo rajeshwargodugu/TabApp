@@ -54,7 +54,12 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (mTabLayout.getSelectedTabPosition() == 0) {
+                mTabTitle = tab.getText().toString();
+                adapterData = mTabTitle +"   "+ mBotNavTitle;
+                data.clear();
+                data.add(adapterData);
+                adapter.notifyDataSetChanged();
+/*                if (mTabLayout.getSelectedTabPosition() == 0) {
                      mTabTitle = "TAB 1 ";
                      adapterData = null;
                      adapterData = mTabTitle + mBotNavTitle;
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     data.add(adapterData);
                     adapter.notifyDataSetChanged();
                     //Toast.makeText(MainActivity.this, "Tab " + mTabLayout.getSelectedTabPosition(), Toast.LENGTH_LONG).show();
-                }
+                }*/
 
             }
 
@@ -99,7 +104,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()) {
+                mBotNavTitle = item.getTitle().toString();
+                adapterData = mTabTitle +"    "+ mBotNavTitle;
+                data.clear();
+                data.add(adapterData);
+                adapter.notifyDataSetChanged();
+                return true;
+
+/*                switch (item.getItemId()) {
                     case R.id.bottom_nav_1:
                         mBotNavTitle = "BOT NAV 1 ";
                         //displayToast();
@@ -125,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                         return true;
                 }
-                return false;
+                return false;*/
             }
         });
 
